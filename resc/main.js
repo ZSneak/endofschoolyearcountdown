@@ -1,7 +1,7 @@
 function simple() {
-    window.location.href = "./simple/simple.html";
+    window.location.href = "./simple/index.html";
 }
 
 function cool() {
-    window.location.href = "./cool/cool.html";
+    window.location.href = "./cool/index.html";
 }
