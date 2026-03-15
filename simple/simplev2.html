@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Countdown Till Summer</title>
+    <script src="../resc/simplev2.js"></script>
+    <!--if only I could use more fonts.....-->
+</head>
+<body bgcolor="#FFFFFF" data-colortype="bgcolor" class="altercolor" link="#0070E0">
+    <table width="100%" border="0" cellpadding="10" cellspacing="0" bordercolor="#000000">
+        <tr>
+            <td colspan="2" align="center" bgcolor="#D1D346" data-colortype="secondary" class="altercolor">
+                <h1><font color="FFFFFF" data-colortype="Fsec" class="altercolor"><b><i>CSS<i>-Less</b></font></h1>
+                <h2><font color="FFFFFF" data-colortype="Fsec" class="altercolor">Instructure's Canvas Fetcher</font></h2>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" bgcolor="D1D346" data-colortype="secondary" class="altercolor">
+                <font face="monospace" color="000000" data-colortype="Fsec" class="altercolor"><marquee width="100%" id="news" scrollamount="7">NEWS:</marquee></font>
+            </td>
+        </tr>
+        <tr>
+            <td width="20%" bgcolor="#D7D3DC" data-colortype="primary" valign="top" class="altercolor">
+                <nav><font color="#000000" data-colortype="Fsec" class="altercolor"><h3>Navigation</h3></font></nav>
+                <hr>
+                <p><a href="#" onclick="toggleTheme()"><font color="0070E0" data-colortype="link" class="altercolor">Dark Mode</font></a></p>
+                <p><a href="#" onclick="toggleRainbow()"><font color="0070E0" data-colortype="link" class="altercolor">Suprise Mode</font></a></p>
+                <dialog id="instructionsbox">
+                    <form method="dialog">
+                        <h3>Here are the instructions to get your Canvas Assignments</h3>
+                        <ol>
+                            <li>Open Canvas</li>
+                            <li>On the Left Sidebar, Click your Profile Picture <br> <img src="../resc/profilepic.png" width="7%" height="7%"></li>
+                            <li>Click Settings</li>
+                            <li>Scroll down to the section called <b>Approved Integrations</b></li>
+                            <li>Click <char>+</char> New Access Token <br> <img width="35%" src="../resc/accesstoken.png"></li>
+                            <li></li>
+                        </ol>
+                        <button>Close Instructions</button>
+                    </form>
+                </dialog>
+                <p><a href="#" onclick="document.getElementById('instructionsbox').showModal()"><font color="0070E0" data-colortype="link" class="altercolor">Instructions</font></a></p>
+                <dialog id="policybox">
+                    <center><table id="policytable"><tr><td>
+                    <button onclick="Policy('simple')">Simplified</button>
+                    <button onclick="Policy('complex')">Complex</button>
+                    <form method="dialog" id="simplePolicy">
+                        <h3>Simplified Usage Message</h3>
+                        <div width="200">
+                        <p>By using this tool, you confirm you're allowed to use your Canvas key. The Developer wrote the code to help you see your assignments, but they <b>never</b> see, save, or share your API key—it stays entirely inside your own web browser. Because this is hosted on GitHub, the developer is not responsible for how Github's servers or your internet provider handles the data, so please use the tool at your own discretion. The actual terms can be found after clicking the "Complex" button above.</p>
+                        </div>
+                        <button>I agree</button>
+                    </form>
+                    <form method="dialog" id="complexPolicy" hidden>
+                        <h3>Usage Policy</h3>
+                        <ol>
+                            <li><h4>Authorization of Data Access</h4><p>By using this application (the "Service"), you represent and warrant that you have the legal right to use and provide the Canvas API key entered. You acknowledge that providing this key is necessary for the Service to function as intended.</p></li>
+                            <li><h4>Developer Commitment & Scope of Responsibility</h4><p>The developer of the source code ("Developer") provides this interface as-is. The Developer explicitly states: <ul><li><b>No Data Storage:</b> Your API key is processed exclusively within your local browser environment. The Developer does not collect, store, transmit, or save your API key to any external database or server under our control.</li><li><b>Purpose Limitation:</b> The code is designed solely to facilitate the fetching of assignments via the Canvas API for the user's personal display.</li></ul></p></li>
+                            <li><h4>Infrastructure and Third-Party Intermediaries</h4><p>You acknowledge that the Service is hosted via <b>GitHub Pages</b>. The Developer is responsible only for the client-side code provided and maintains no control over the hosting infrastructure, your Internet Service Provider (ISP), or the transmission of data across the internet.</p></li>
+                            <li><h4>Limitation of Liability</h4><p>The Developer shall not be held liable for any unauthorized access to data that occurs through intermediaries, browser vulnerabilities, or the user’s own mishandling of their API credentials. Use of this Service is at your own risk.</p></li>
+                        </ol>
+                        <button>I agree to these terms</button>
+                    </form>
+                    </td></tr></table></center>
+                </dialog>
+                <p><a href="#" onclick="document.getElementById('policybox').showModal()"><font color="0070E0" data-colortype="link" class="altercolor">Usage Policy</font></a></p>
+            </td>
+            <td width="80%" bgcolor="#663399" valign="top" data-colortype="accent" class="altercolor"><!--rebecca purple  -->
+                <h3><font size="6" color="#FFFFFF" data-colortype="Fpri" class="altercolor">Canvas Fetcher</font></h3>
+                <p><font color="#FFFFFF" data-colortype="Fpri" class="altercolor">Read the terms of use, and the privacy policy first before use.</font></p>
+                <form>
+                <p><input type="password" id="apikey" placeholder="Canvas API key goes here" data-colortype="bgcolor" class="altercolor" required> <button type="button" onmousedown="document.getElementById('apikey').setAttribute('type', 'text')" onmouseup="document.getElementById('apikey').setAttribute('type', 'password')"><font size="1">👁</font></button> </p>
+                <p><input type="url" placeholder="eg. https://harvard.instructure.com" pattern="https://*.*.*" size="26" id="institutionName" required> <button type="submit" onclick="getFromCanvas(document.getElementById('apikey').value, document.getElementById('institutionName').value)">Retrieve</button></p>
+                </form>
+
+            </td>
+        </tr>
+    </table>
+    <script src="../resc/simplev2.js"></script>
+    <script src="../resc/simplev2.canvasapi.js"></script>
+</body>
